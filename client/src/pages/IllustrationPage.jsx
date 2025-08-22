@@ -9,7 +9,6 @@ export default function IllustrationPage({ savedPolicy }) {
     useEffect(() => {
         if (savedPolicy) {
 
-            // auto-fetch illustration
             (async () => {
                 try {
                     const res = await http.get(`/calculate/${savedPolicy.id}`);

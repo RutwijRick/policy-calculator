@@ -1,4 +1,3 @@
-// src/scripts/sync.js
 import { sequelize } from "../models/index.js";
 
 (async () => {

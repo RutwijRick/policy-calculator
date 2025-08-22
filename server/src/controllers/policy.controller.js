@@ -1,11 +1,9 @@
 import { Policy, IllustrationRow } from "../models/index.js";
 
-// Step 1: calculate only (not saving in DB yet)
 export const calculatePolicy = async (req, res) => {
     try {
         const { dob, gender, sumAssured, modalPremium, premiumFrequency, pt, ppt, riders } = req.body;
 
-        // Dummy illustration calculation (replace with real formula later)
         const tableData = Array.from({ length: pt }, (_, i) => ({
             year: i + 1,
             premium: modalPremium,
@@ -24,7 +22,6 @@ export const calculatePolicy = async (req, res) => {
     }
 };
 
-// Step 2: save policy to DB
 export const savePolicy = async (req, res) => {
     try {
         const { userId, policyType, dob, gender, sumAssured, modalPremium, premiumFrequency, pt, ppt, riders } = req.body;
@@ -49,7 +46,6 @@ export const savePolicy = async (req, res) => {
     }
 };
 
-// Step 3: fetch all policies by user
 export const getPoliciesByUser = async (req, res) => {
     try {
         const { userId } = req.params;
@@ -64,7 +60,7 @@ export const getPoliciesByUser = async (req, res) => {
 export const getPolicyById = async (req, res) => {
     try {
         const { id } = req.params;
-        const userId = req.user.id; // assuming you attach logged-in user to req.user in middleware
+        const userId = req.user.id;
 
         const policy = await Policy.findOne({
             where: { id, userId },

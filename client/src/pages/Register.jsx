@@ -1,4 +1,3 @@
-// src/pages/Register.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import http from "../api/http";
@@ -47,7 +46,6 @@ export default function Register() {
         const monthDiff = today.getMonth() - dob.getMonth();
         const dayDiff = today.getDate() - dob.getDate();
 
-        // Adjust age if birthday hasn't occurred yet this year
         if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
             age--;
         }

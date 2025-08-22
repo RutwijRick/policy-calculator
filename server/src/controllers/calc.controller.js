@@ -5,7 +5,6 @@ export const calculateIllustration = async (req, res) => {
     try {
         const { age, premium, policyTerm, rider, fundGrowthRate } = req.body;
 
-        // --- VALIDATIONS (sample from assignment’s sheet) ---
         if (age < 18 || age > 65) {
             return res.status(400).json({ error: "Age must be between 18 and 65" });
         }
@@ -16,7 +15,6 @@ export const calculateIllustration = async (req, res) => {
             return res.status(400).json({ error: "Policy term must be between 5 and 30 years" });
         }
 
-        // --- CALCULATIONS ---
         const mortalityRate = 0.001 * (age / 30); // higher age → higher mortality
         const riderCharge = rider ? premium * 0.05 : 0; // 5% of premium
         const netPremium = premium - riderCharge;
@@ -61,7 +59,6 @@ export const calculateBenefit = async (req, res) => {
     try {
         const { age, policyTerm, premiumTerm, sumAssured, frequency } = req.body;
 
-        // === Validations from Excel ===
         if (age < 18 || age > 65) {
             return res.status(400).json({ error: "Age must be between 18 and 65 years" });
         }
@@ -265,7 +262,7 @@ export const generateIllustration = async (req, res) => {
             },
             illustration,
             irr: (irr * 100).toFixed(2) + "%",
-            riders, // include for frontend
+            riders,
         });
 
     } catch (err) {

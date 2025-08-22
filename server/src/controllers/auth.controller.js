@@ -17,7 +17,6 @@ export const login = async (req, res) => {
             { expiresIn: "1h" }
         );
 
-        // decrypt the encrypted name before sending
         const decryptedName = decrypt(user.nameEnc);
         res.json({
             token,

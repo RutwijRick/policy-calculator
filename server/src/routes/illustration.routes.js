@@ -10,7 +10,6 @@ r.post('/:policyId/generate', auth, async (req, res) => {
     if (!policy || policy.userId !== req.user.uid) return res.status(404).json({ message: 'Not found' });
 
     const rows = buildIllustration(policy);
-    // Persist (optional for demo)
     await IllustrationRow.destroy({ where: { policyId: policy.id } });
     await IllustrationRow.bulkCreate(rows.map(rw => ({ ...rw, policyId: policy.id })));
 

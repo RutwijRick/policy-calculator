@@ -4,7 +4,6 @@ import policyDef from './Policy.js';
 import rowDef from './IllustrationRow.js';
 import sequelize from "../config/db.js";
 
-// const sequelize = getSequelize();
 const User = userDef(sequelize);
 const Policy = policyDef(sequelize);
 const IllustrationRow = rowDef(sequelize);

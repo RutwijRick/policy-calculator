@@ -4,7 +4,7 @@ const mortalityRate = (age) => {
     if (age <= 30) return 1.2;
     if (age <= 40) return 1.8;
     if (age <= 50) return 3.0;
-    return 4.5; // up to 56
+    return 4.5;
 };
 
 export const buildIllustration = (policy, asOfDate = new Date()) => {
@@ -25,7 +25,6 @@ export const buildIllustration = (policy, asOfDate = new Date()) => {
         fund8 = (fund8 + alloc) * (1 + annualRates[1]);
 
         const deathBenefit4 = Math.max(policy.sumAssured, fund4);
-        // Use the same death benefit for table simplicity (could compute separately), show against 8% fund
         const row = {
             year: y,
             age,
@@ -58,7 +57,7 @@ export const calculateIRR = (cashflows, guess = 0.1) => {
 
         const newRate = rate - npv / derivative;
         if (Math.abs(newRate - rate) <= precision) {
-            return (newRate * 100).toFixed(2); // return in %
+            return (newRate * 100).toFixed(2);
         }
         rate = newRate;
     }

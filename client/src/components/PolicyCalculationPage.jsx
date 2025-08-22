@@ -32,14 +32,12 @@ const PolicyCalculationPage = ({ viewPolicy }) => {
         });
     };
 
-    // Fetch logged in user profile
     useEffect(() => {
         http.get("/user/me").then((res) => {
-            setUser(res.data); // { id, name, dob, age }
+            setUser(res.data);
         });
     }, []);
 
-    // Validation rules (same as Excel rules)
     const validate = () => {
         let errs = {};
 
@@ -72,7 +70,6 @@ const PolicyCalculationPage = ({ viewPolicy }) => {
         return Object.keys(errs).length === 0;
     };
 
-    // Handle form submit - Calculate only
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validate()) return;
@@ -103,7 +100,6 @@ const PolicyCalculationPage = ({ viewPolicy }) => {
         }
     };
 
-    // Handle save policy
     const handleSavePolicy = async () => {
         try {
             const payload = {

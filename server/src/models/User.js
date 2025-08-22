@@ -17,7 +17,6 @@ export default (sequelize) => {
     User.init({
         email: { type: DataTypes.STRING, unique: true, allowNull: false },
         passwordHash: { type: DataTypes.STRING, allowNull: false },
-        // Sensitive PII (masked/encrypted at rest)
         nameEnc: { type: DataTypes.TEXT, allowNull: true },
         dobEnc: { type: DataTypes.TEXT, allowNull: true },
         mobileEnc: { type: DataTypes.TEXT, allowNull: true }

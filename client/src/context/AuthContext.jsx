@@ -1,4 +1,3 @@
-// context/AuthContext.jsx
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +25,7 @@ export const AuthProvider = ({ children }) => {
         setToken(jwtToken);
         localStorage.setItem("user", JSON.stringify(userData));
         localStorage.setItem("token", jwtToken);
-        navigate("/dashboard"); // redirect after login
+        navigate("/dashboard");
     };
 
     const logout = () => {
@@ -34,15 +33,13 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        navigate("/login"); // redirect after logout
+        navigate("/login");
     };
 
     const handleExpiredToken = () => {
-        // Automatically log out user if the token is expired
         logout();
     };
 
-    // This function should be used in your API calls where 403 error occurs
     const handleApiError = (error) => {
         if (error.response && error.response.status === 403) {
             handleExpiredToken();

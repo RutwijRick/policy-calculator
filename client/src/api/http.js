@@ -17,14 +17,12 @@ http.interceptors.request.use(
     }
 );
 
-// This is where we add the response interceptor
 http.interceptors.response.use(
     (response) => response,
     async (error) => {
         if (error.response && error.response.status === 403) {
-            // Clear token and redirect to login
             localStorage.removeItem("token");
-            window.location.href = "/login"; // redirect
+            window.location.href = "/login";
         }
         return Promise.reject(error);
     }

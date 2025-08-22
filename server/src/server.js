@@ -1,4 +1,3 @@
-// src/server.js
 import dotenv from "dotenv";
 import app from "./app.js";
 import { sequelize } from "./models/index.js";
