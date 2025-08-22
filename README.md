@@ -91,11 +91,29 @@ Stateless Backend → Horizontally scalable with load balancers.
 
 ## Setup
 
+# Sample .env 
+- store in /backend or /server root
+---
+
+NODE_ENV=development
+PORT=4000
+DB_DIALECT=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=yourdbname
+DB_USER=mysqlusername
+DB_PASS=mysqlpassword
+JWT_SECRET=abcsecret
+CRYPTO_KEY_HEX=4f8e2b91b4a2c7f83fcd239a5f1e6a7c4e9b2a1d3f8c7d9a6b2c1e4f7d8c2b9f (should be 64 characters)
+CRYPTO_NONCE_HEX=1a2b3c4d5e6f7a8b9c0d1e2f (should be 24 characters)
+
+--- 
+
 # Backend
 ###
 cd backend
 npm install
-cp .env.example .env   # configure DB + secrets
+npm run db:sync   # sync db using sequelize
 npm run dev
 ###
 
